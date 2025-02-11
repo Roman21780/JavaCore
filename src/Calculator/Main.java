@@ -6,16 +6,7 @@ public class Main {
 
         int a = calc.plus.apply(1, 2);
         int b = calc.minus.apply(1,1);
-
-        // перед делением нужно проверить, является ли делитель нулем
-        int c;
-        if (b != 0) {
-            c = calc.devide.apply(a, b);
-        } else {
-            calc.println.accept(0);
-            System.out.println("Деление на ноль недопустимо");
-            return;
-        }
+        int c = calc.divide.apply(a, b);
 
         calc.println.accept(c);
     }

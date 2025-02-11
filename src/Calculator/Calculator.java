@@ -8,12 +8,16 @@ public class Calculator {
     BinaryOperator<Integer> plus = (x, y) -> x + y;
     BinaryOperator<Integer> minus = (x, y) -> x - y;
     BinaryOperator<Integer> multiply = (x, y) -> x * y;
-    BinaryOperator<Integer> devide = (x, y) -> x / y; // возможная ошибка деления на 0
+    BinaryOperator<Integer> divide = (x, y) -> {
+        if (y == 0) {
+            System.out.println("Error: Division by zero");
+            return 0;
+        }
+        return x / y;
+    };
 
     UnaryOperator<Integer> pow = x -> x * x;
     UnaryOperator<Integer> abs = x -> x > 0 ? x : x * -1;
-
     Predicate<Integer> isPositive = x -> x > 0;
-
     Consumer<Integer> println = System.out::println;
 }

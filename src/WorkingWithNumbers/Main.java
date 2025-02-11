@@ -9,7 +9,7 @@ public class Main {
         List<Integer> positiveNumbers = new ArrayList<>();
 
         // фильтрация положительных чисел
-        for (Integer number: intList) {
+        for (int number: intList) {
             if (number > 0) {
                 positiveNumbers.add(number);
             }
@@ -17,7 +17,7 @@ public class Main {
 
         // фильтрация четных чисел
         List<Integer> evenNumbers = new ArrayList<>();
-        for (Integer number: positiveNumbers) {
+        for (int number: positiveNumbers) {
             if (number % 2 == 0) {
                 evenNumbers.add(number);
             }
@@ -27,8 +27,8 @@ public class Main {
         Collections.sort(evenNumbers);
 
         // вывод результата
-        for (Integer number: evenNumbers) {
-            System.out.println(number);
+        for (int number: evenNumbers) {
+            System.out.print(number + " ");
         }
     }
 }

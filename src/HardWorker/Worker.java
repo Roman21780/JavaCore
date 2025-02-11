@@ -1,7 +1,7 @@
 package HardWorker;
 
 public class Worker {
-    private OnTaskDoneListener callback;
+    private final OnTaskDoneListener callback;
 
     public Worker(OnTaskDoneListener callback) {
         this.callback = callback;
@@ -12,5 +12,4 @@ public class Worker {
             callback.onDone("Task " + i + " is done");
         }
     }
-
 }
