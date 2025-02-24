@@ -1,5 +1,6 @@
 package PopulationCensus;
 
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
@@ -13,13 +14,13 @@ public class MainTest {
     public void testCountMinors_validArgument_success() {
         // given:
         Collection<Person> persons = Arrays.asList(
-                new Person("Jack", "Evans", 17, Sex.MAN, Education.HIGHER),
-                new Person("Connor", "Young", 20, Sex.MAN, Education.HIGHER),
-                new Person("Harry", "Harris", 15, Sex.MAN, Education.FURTHER)
+                new Person("Jack", "Evans", 17, PopulationCensus.Sex.MAN, Education.HIGHER),
+                new Person("Connor", "Young", 20, PopulationCensus.Sex.MAN, Education.HIGHER),
+                new Person("Harry", "Harris", 15, PopulationCensus.Sex.MAN, Education.FURTHER)
         );
 
         // when:
-        long minorsCount = Main.countMinors(persons);
+        long minorsCount = PopulationCensus.Main.countMinors(persons);
 
         // then:
         Assertions.assertEquals(2, minorsCount, "Количество несовершеннолетних должно быть 2");
@@ -29,13 +30,13 @@ public class MainTest {
     public void testGetConscripts_validArgument_success() {
         // given:
         Collection<Person> persons = Arrays.asList(
-                new Person("Jack", "Evans", 20, Sex.MAN, Education.HIGHER),
-                new Person("Connor", "Young", 17, Sex.MAN, Education.HIGHER),
-                new Person("Harry", "Harris", 25, Sex.MAN, Education.FURTHER)
+                new Person("Jack", "Evans", 20, PopulationCensus.Sex.MAN, Education.HIGHER),
+                new Person("Connor", "Young", 17, PopulationCensus.Sex.MAN, Education.HIGHER),
+                new Person("Harry", "Harris", 25, PopulationCensus.Sex.MAN, Education.FURTHER)
         );
 
         // when:
-        List<String> conscripts = Main.getConscripts(persons);
+        List<String> conscripts = PopulationCensus.Main.getConscripts(persons);
 
         // then:
         Assertions.assertIterableEquals(Arrays.asList("Evans", "Harris"), conscripts, "Список фамилий призывников должен содержать Evans и Harris");
@@ -45,14 +46,14 @@ public class MainTest {
     public void testGetEmployedPeople_validArgument_success() {
         // given:
         Collection<Person> persons = Arrays.asList(
-                new Person("Jack", "Evans", 25, Sex.MAN, Education.HIGHER),
-                new Person("Connor", "Young", 17, Sex.MAN, Education.HIGHER),
-                new Person("Harry", "Harris", 30, Sex.WOMAN, Education.HIGHER),
+                new Person("Jack", "Evans", 25, PopulationCensus.Sex.MAN, Education.HIGHER),
+                new Person("Connor", "Young", 17, PopulationCensus.Sex.MAN, Education.HIGHER),
+                new Person("Harry", "Harris", 30, PopulationCensus.Sex.WOMAN, Education.HIGHER),
                 new Person("George", "Wilson", 40, Sex.MAN, Education.FURTHER)
         );
 
         // when:
-        List<Person> employedPeople = Main.getEmployedPeople(persons);
+        List<Person> employedPeople = PopulationCensus.Main.getEmployedPeople(persons);
 
         // then:
         Assertions.assertEquals(2, employedPeople.size(), "Должно быть 2 человека с высшим образованием");

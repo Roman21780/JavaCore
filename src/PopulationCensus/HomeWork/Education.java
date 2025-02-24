@@ -1,4 +1,4 @@
-package PopulationCensus;
+package PopulationCensus.HomeWork;
 
 public enum Education {
     ELEMENTARY,

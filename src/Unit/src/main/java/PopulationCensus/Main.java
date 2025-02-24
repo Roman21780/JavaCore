@@ -1,5 +1,7 @@
 package PopulationCensus;
 
+
+
 import java.util.*;
 
 public class Main {
@@ -38,7 +40,7 @@ public class Main {
                     names.get(random.nextInt(names.size())),
                     families.get(random.nextInt(families.size())),
                     random.nextInt(100),
-                    Sex.values()[random.nextInt(Sex.values().length)],
+                    PopulationCensus.Sex.values()[random.nextInt(PopulationCensus.Sex.values().length)],
                     Education.values()[random.nextInt(Education.values().length)])
             );
         }
@@ -66,7 +68,7 @@ public class Main {
      */
     public static List<String> getConscripts(Collection<Person> persons) {
         return persons.stream()
-                .filter(person -> person.getSex() == Sex.MAN && person.getAge() >= 18 && person.getAge() <= 27)
+                .filter(person -> person.getSex() == PopulationCensus.Sex.MAN && person.getAge() >= 18 && person.getAge() <= 27)
                 .map(Person::getFamily)
                 .toList();
     }
@@ -80,7 +82,7 @@ public class Main {
     public static List<Person> getEmployedPeople(Collection<Person> persons) {
         return persons.stream()
                 .filter(person -> person.getEducation() == Education.HIGHER)
-                .filter(person -> (person.getSex() == Sex.WOMAN && person.getAge() >= 18 && person.getAge() <= 60) ||
+                .filter(person -> (person.getSex() == PopulationCensus.Sex.WOMAN && person.getAge() >= 18 && person.getAge() <= 60) ||
                         (person.getSex() == Sex.MAN && person.getAge() >= 18 && person.getAge() <= 65))
                 .sorted(Comparator.comparing(Person::getFamily))
                 .toList();

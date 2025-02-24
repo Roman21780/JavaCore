@@ -1,5 +1,7 @@
 package PopulationCensus;
 
+import PopulationCensus.Main;
+import PopulationCensus.Sex;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -15,13 +17,13 @@ public class MainHamcrestTest {
     public void testCountMinors_validArgument_success() {
         // given:
         Collection<Person> persons = Arrays.asList(
-                new Person("Jack", "Evans", 17, Sex.MAN, Education.HIGHER),
-                new Person("Connor", "Young", 20, Sex.MAN, Education.HIGHER),
-                new Person("Harry", "Harris", 15, Sex.MAN, Education.FURTHER)
+                new Person("Jack", "Evans", 17, PopulationCensus.Sex.MAN, Education.HIGHER),
+                new Person("Connor", "Young", 20, PopulationCensus.Sex.MAN, Education.HIGHER),
+                new Person("Harry", "Harris", 15, PopulationCensus.Sex.MAN, Education.FURTHER)
         );
 
         // when:
-        long minorsCount = Main.countMinors(persons);
+        long minorsCount = PopulationCensus.Main.countMinors(persons);
 
         // then:
         assertThat(minorsCount, equalTo(2L)); // Проверяем, что количество несовершеннолетних равно 2
@@ -31,13 +33,13 @@ public class MainHamcrestTest {
     public void testGetConscripts_validArgument_success() {
         // given:
         Collection<Person> persons = Arrays.asList(
-                new Person("Jack", "Evans", 20, Sex.MAN, Education.HIGHER),
-                new Person("Connor", "Young", 17, Sex.MAN, Education.HIGHER),
-                new Person("Harry", "Harris", 25, Sex.MAN, Education.FURTHER)
+                new Person("Jack", "Evans", 20, PopulationCensus.Sex.MAN, Education.HIGHER),
+                new Person("Connor", "Young", 17, PopulationCensus.Sex.MAN, Education.HIGHER),
+                new Person("Harry", "Harris", 25, PopulationCensus.Sex.MAN, Education.FURTHER)
         );
 
         // when:
-        List<String> conscripts = Main.getConscripts(persons);
+        List<String> conscripts = PopulationCensus.Main.getConscripts(persons);
 
         // then:
         assertThat(conscripts, containsInAnyOrder("Evans", "Harris")); // Проверяем, что список содержит фамилии в любом порядке
@@ -48,14 +50,14 @@ public class MainHamcrestTest {
     public void testGetEmployedPeople_validArgument_success() {
         // given:
         Collection<Person> persons = Arrays.asList(
-                new Person("Jack", "Evans", 25, Sex.MAN, Education.HIGHER),
-                new Person("Connor", "Young", 17, Sex.MAN, Education.HIGHER),
-                new Person("Harry", "Harris", 30, Sex.WOMAN, Education.HIGHER),
-                new Person("George", "Wilson", 40, Sex.MAN, Education.FURTHER)
+                new Person("Jack", "Evans", 25, PopulationCensus.Sex.MAN, Education.HIGHER),
+                new Person("Connor", "Young", 17, PopulationCensus.Sex.MAN, Education.HIGHER),
+                new Person("Harry", "Harris", 30, PopulationCensus.Sex.WOMAN, Education.HIGHER),
+                new Person("George", "Wilson", 40, PopulationCensus.Sex.MAN, Education.FURTHER)
         );
 
         // when:
-        List<Person> employedPeople = Main.getEmployedPeople(persons);
+        List<Person> employedPeople = PopulationCensus.Main.getEmployedPeople(persons);
 
         // then:
         assertThat(employedPeople, hasSize(2)); // Проверяем, что размер списка равен 2
@@ -73,7 +75,7 @@ public class MainHamcrestTest {
         int count = 5;
 
         // when:
-        Collection<Person> persons = Main.generatePersons(count);
+        Collection<Person> persons = PopulationCensus.Main.generatePersons(count);
 
         // then:
         assertThat(persons, hasSize(count)); // Проверяем, что количество сгенерированных людей равно count
@@ -102,13 +104,13 @@ public class MainHamcrestTest {
     public void testGetConscripts_noConscripts_emptyList() {
         // given:
         Collection<Person> persons = Arrays.asList(
-                new Person("Jack", "Evans", 17, Sex.MAN, Education.HIGHER),
-                new Person("Connor", "Young", 30, Sex.MAN, Education.HIGHER),
-                new Person("Harry", "Harris", 15, Sex.MAN, Education.FURTHER)
+                new Person("Jack", "Evans", 17, PopulationCensus.Sex.MAN, Education.HIGHER),
+                new Person("Connor", "Young", 30, PopulationCensus.Sex.MAN, Education.HIGHER),
+                new Person("Harry", "Harris", 15, PopulationCensus.Sex.MAN, Education.FURTHER)
         );
 
         // when:
-        List<String> conscripts = Main.getConscripts(persons);
+        List<String> conscripts = PopulationCensus.Main.getConscripts(persons);
 
         // then:
         assertThat(conscripts, empty()); // Проверяем, что список пуст
@@ -118,8 +120,8 @@ public class MainHamcrestTest {
     public void testGetEmployedPeople_noEmployedPeople_emptyList() {
         // given:
         Collection<Person> persons = Arrays.asList(
-                new Person("Jack", "Evans", 17, Sex.MAN, Education.HIGHER),
-                new Person("Connor", "Young", 70, Sex.MAN, Education.HIGHER),
+                new Person("Jack", "Evans", 17, PopulationCensus.Sex.MAN, Education.HIGHER),
+                new Person("Connor", "Young", 70, PopulationCensus.Sex.MAN, Education.HIGHER),
                 new Person("Harry", "Harris", 65, Sex.WOMAN, Education.HIGHER)
         );
 

@@ -1,5 +1,7 @@
 package PopulationCensus;
 
+import PopulationCensus.Sex;
+
 class Person {
     private String name;
     private String family;

@@ -1,4 +1,4 @@
-package PopulationCensus;
+package PopulationCensus.HomeWork;
 
 class Person {
     private String name;
